@@ -70,12 +70,12 @@ const Navbar = () => {
           </div>
           <div className="nav-item">
             <Link 
-              to="/resources" 
+              to="/dashboard" 
               className={`nav-link ${isActiveLink('/resources')}`}
               onClick={closeMobileMenu}
             >
               <i className="fas fa-file-alt"></i>
-              <span>Resources</span>
+              <span>Dashoard</span>
             </Link>
           </div>
           

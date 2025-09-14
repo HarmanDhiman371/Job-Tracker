@@ -106,21 +106,21 @@ const HomePage = () => {
   };
 
   // Badge images mapping - Only DSA has multiple levels, others only have completion badges
-  const badgeImages = {
+   const badgeImages = {
     // DSA badges (4 levels)
     'DSA Bronze': '/dsa-bronze.png',
-    'DSA Silver': '/dsa-silver.png',
+    'DSA Silver': '/ds-silver.png',
     'DSA Gold': '/dsa-gold.png',
     'DSA Completion': '/ds.png',
     
     // Other subjects - only completion badges
-    'Full Stack Completion': '/badges/fullstack-completion.png',
-    'OS Completion': '/badges/os-completion.png',
-    'Networking Completion': '/badges/networking-completion.png',
-    'Cloud Completion': '/badges/cloud-completion.png',
+    'Full Stack Completion': '/fs.png',
+    'OS Completion': '/full-stack.png',
+    'Networking Completion': '/cn.png',
+    'Cloud Completion': '/full-stack.png',
     
     // Overall completion badge
-    'All Subjects Master': '/badges/all-completion.png'
+    'All Subjects Master': '/full-stack.png'
   };
 
   // Function to get the appropriate badge name based on progress

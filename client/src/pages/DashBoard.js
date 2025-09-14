@@ -1,3 +1,4 @@
+// Dashboard.js
 import React, { useState, useEffect } from 'react';
 import '../styles/Dashboard.css';
 
@@ -15,7 +16,7 @@ const Dashboard = () => {
   const [newBadges, setNewBadges] = useState([]);
   const [showCongrats, setShowCongrats] = useState(false);
 
-  // Badge images mapping - using local images from public folder
+  // Badge images mapping - using the exact paths from your code
   const badgeImages = {
     // DSA badges (4 levels)
     'DSA Bronze': '/dsa-bronze.png',
@@ -35,6 +36,19 @@ const Dashboard = () => {
 
   // Load user data and progress from localStorage
   useEffect(() => {
+    loadDashboardData();
+    
+    // Listen for progress updates from other components
+    window.addEventListener('studyProgressUpdated', loadDashboardData);
+    window.addEventListener('companiesUpdated', loadDashboardData);
+    
+    return () => {
+      window.removeEventListener('studyProgressUpdated', loadDashboardData);
+      window.removeEventListener('companiesUpdated', loadDashboardData);
+    };
+  }, []);
+
+  const loadDashboardData = () => {
     // Load user name
     const userName = localStorage.getItem('userName') || 'Guest';
     setUserName(userName);
@@ -54,21 +68,39 @@ const Dashboard = () => {
     const savedStudyData = JSON.parse(localStorage.getItem('studyProgress')) || {};
     setStudyProgress(savedStudyData);
 
-    // Load earned badges and check for new ones
-    const savedBadges = JSON.parse(localStorage.getItem('earnedBadges')) || [];
-    const newEarnedBadges = calculateBadges(savedStudyData, companyStats, savedBadges);
+    // Calculate and update badges
+    updateBadges(savedStudyData, companyStats);
+  };
+
+  const updateBadges = (studyData, companyStats) => {
+    const currentBadges = JSON.parse(localStorage.getItem('earnedBadges')) || [];
+    const newlyEarnedBadges = [];
+    const updatedBadges = [];
+
+    // Calculate which badges should be earned based on current progress
+    const badgesToEarn = calculateEarnedBadges(studyData, companyStats);
     
-    // Save updated badges
-    localStorage.setItem('earnedBadges', JSON.stringify(newEarnedBadges));
-    setBadges(newEarnedBadges);
-    
-    // Check for newly earned badges to show congratulations
-    const newlyEarned = newEarnedBadges.filter(newBadge => 
-      !savedBadges.some(savedBadge => savedBadge.name === newBadge.name)
+    // Check each badge that should be earned
+    badgesToEarn.forEach(badge => {
+      // If badge is not already in current badges, it's newly earned
+      if (!currentBadges.some(b => b.name === badge.name)) {
+        newlyEarnedBadges.push(badge);
+      }
+      updatedBadges.push(badge);
+    });
+
+    // Remove badges that are no longer earned (due to progress reset)
+    const finalBadges = updatedBadges.filter(badge => 
+      badgesToEarn.some(b => b.name === badge.name)
     );
+
+    // Save updated badges
+    localStorage.setItem('earnedBadges', JSON.stringify(finalBadges));
+    setBadges(finalBadges);
     
-    if (newlyEarned.length > 0) {
-      setNewBadges(newlyEarned);
+    // Show congratulations for new badges
+    if (newlyEarnedBadges.length > 0) {
+      setNewBadges(newlyEarnedBadges);
       setShowCongrats(true);
       
       // Auto-hide after 5 seconds
@@ -76,10 +108,10 @@ const Dashboard = () => {
         setShowCongrats(false);
       }, 5000);
     }
-  }, []);
+  };
 
-  const calculateBadges = (studyData, companyStats, existingBadges = []) => {
-    const earnedBadges = [...existingBadges];
+  const calculateEarnedBadges = (studyData, companyStats) => {
+    const earnedBadges = [];
     let allSubjectsCompleted = true;
 
     // Study completion badges
@@ -98,7 +130,7 @@ const Dashboard = () => {
         // DSA has 4 badge levels
         if (category === 'dsa') {
           // Bronze badge (25% completion)
-          if (percentage >= 25 && !earnedBadges.some(b => b.name === 'DSA Bronze')) {
+          if (percentage >= 25) {
             earnedBadges.push({ 
               type: 'Bronze', 
               category: 'DSA', 
@@ -107,7 +139,7 @@ const Dashboard = () => {
           }
 
           // Silver badge (50% completion)
-          if (percentage >= 50 && !earnedBadges.some(b => b.name === 'DSA Silver')) {
+          if (percentage >= 50) {
             earnedBadges.push({ 
               type: 'Silver', 
               category: 'DSA', 
@@ -116,7 +148,7 @@ const Dashboard = () => {
           }
 
           // Gold badge (75% completion)
-          if (percentage >= 75 && !earnedBadges.some(b => b.name === 'DSA Gold')) {
+          if (percentage >= 75) {
             earnedBadges.push({ 
               type: 'Gold', 
               category: 'DSA', 
@@ -125,7 +157,7 @@ const Dashboard = () => {
           }
 
           // Completion badge (100% completion)
-          if (percentage === 100 && !earnedBadges.some(b => b.name === 'DSA Completion')) {
+          if (percentage === 100) {
             earnedBadges.push({ 
               type: 'Completion', 
               category: 'DSA', 
@@ -136,7 +168,7 @@ const Dashboard = () => {
         // Other subjects only have completion badges
         else {
           // Completion badge (100% completion)
-          if (percentage === 100 && !earnedBadges.some(b => b.name === `${categoryName} Completion`)) {
+          if (percentage === 100) {
             earnedBadges.push({ 
               type: 'Completion', 
               category: categoryName, 
@@ -148,7 +180,7 @@ const Dashboard = () => {
     });
 
     // Overall completion badge (all subjects completed)
-    if (allSubjectsCompleted && !earnedBadges.some(b => b.name === 'All Subjects Master')) {
+    if (allSubjectsCompleted && Object.keys(studyData).length > 0) {
       earnedBadges.push({ 
         type: 'Master', 
         category: 'Overall', 
@@ -189,6 +221,18 @@ const Dashboard = () => {
     setShowCongrats(false);
   };
 
+  // Helper function to get category icon
+  const getCategoryIcon = (category) => {
+    switch(category) {
+      case 'dsa': return 'fas fa-code';
+      case 'fullstack': return 'fas fa-laptop-code';
+      case 'os': return 'fas fa-desktop';
+      case 'cn': return 'fas fa-network-wired';
+      case 'cloud': return 'fas fa-cloud';
+      default: return 'fas fa-book';
+    }
+  };
+
   return (
     <div className="dashboard-page">
       {/* Congratulations Popup */}
@@ -205,16 +249,14 @@ const Dashboard = () => {
                 <div key={index} className="earned-badge">
                   <div className="badge-circle-large">
                     <img 
-                      src={badgeImages[badge.name] || '/badges/default-badge.png'} 
+                      src={badgeImages[badge.name]} 
                       alt={badge.name}
                       className="badge-image"
-                      onError={(e) => {
-                        e.target.src = '/badges/default-badge.png';
-                      }}
                     />
                   </div>
                   <div className="badge-details">
                     <span className="badge-name">{badge.name}</span>
+                    <span className="badge-category">{badge.category}</span>
                   </div>
                 </div>
               ))}
@@ -346,7 +388,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Badges Section - Only Circular Badges */}
+      {/* Badges Section */}
       <div className="badges-section">
         <h2>Your Achievements 🏆</h2>
         {badges.length === 0 ? (
@@ -357,15 +399,13 @@ const Dashboard = () => {
         ) : (
           <div className="badges-grid-circular">
             {badges.map((badge, index) => (
-              <div key={index} className="badge-circle">
+              <div key={index} className="badge-circle" title={`${badge.name} - ${badge.category}`}>
                 <img 
-                  src={badgeImages[badge.name] || '/default.png'} 
+                  src={badgeImages[badge.name]} 
                   alt={badge.name}
                   className="badge-image"
-                  onError={(e) => {
-                    e.target.src = '/badges/default-badge.png';
-                  }}
                 />
+                
               </div>
             ))}
           </div>
@@ -376,11 +416,11 @@ const Dashboard = () => {
       <div className="quick-actions">
         <h2>Quick Actions</h2>
         <div className="action-buttons">
-          <button className="action-btn">
+          <button className="action-btn" onClick={() => window.location.href = '/companies'}>
             <i className="fas fa-plus"></i>
             Add Company
           </button>
-          <button className="action-btn">
+          <button className="action-btn" onClick={() => window.location.href = '/study'}>
             <i className="fas fa-book"></i>
             Study Topics
           </button>
@@ -392,18 +432,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-};
-
-// Helper function to get category icon
-const getCategoryIcon = (category) => {
-  switch(category) {
-    case 'dsa': return 'fas fa-code';
-    case 'fullstack': return 'fas fa-laptop-code';
-    case 'os': return 'fas fa-desktop';
-    case 'cn': return 'fas fa-network-wired';
-    case 'cloud': return 'fas fa-cloud';
-    default: return 'fas fa-book';
-  }
 };
 
 export default Dashboard;
