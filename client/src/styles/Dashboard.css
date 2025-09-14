@@ -855,14 +855,14 @@
 
 .badge-circle {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #4361ee, #3a0ca3);
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+ 
   transition: all 0.3s ease;
   cursor: pointer;
   padding: 12px;
