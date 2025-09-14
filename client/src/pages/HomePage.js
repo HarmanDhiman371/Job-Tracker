@@ -120,7 +120,7 @@ const HomePage = () => {
     'Cloud Completion': '/full-stack.png',
     
     // Overall completion badge
-    'All Subjects Master': '/full-stack.png'
+    'All Subjects Master': '/Harman.png'
   };
 
   // Function to get the appropriate badge name based on progress

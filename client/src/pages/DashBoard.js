@@ -31,7 +31,7 @@ const Dashboard = () => {
     'Cloud Completion': '/full-stack.png',
     
     // Overall completion badge
-    'All Subjects Master': '/full-stack.png'
+    'All Subjects Master': '/Harman.png'
   };
 
   // Load user data and progress from localStorage
