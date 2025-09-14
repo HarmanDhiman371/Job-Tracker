@@ -454,3 +454,282 @@
     grid-template-columns: 1fr;
   }
 }
+/* Add these styles to your existing HomePage.css */
+
+.progress-item .progress-fill.interview {
+  background: linear-gradient(90deg, #f72585, #7209b7);
+}
+
+.progress-item .progress-fill.offer {
+  background: linear-gradient(90deg, #3a0ca3, #4361ee);
+}
+
+.progress-item .progress-fill.rejected {
+  background: linear-gradient(90deg, #e63946, #f72585);
+}
+
+/* Ensure the progress bars have proper styling */
+.progress-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.progress-item span:first-child {
+  width: 100px;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.progress-item span:last-child {
+  width: 30px;
+  text-align: right;
+  font-weight: 600;
+  color: #2b2d42;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 1rem;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+/* Badges Section */
+.badges-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  text-align: center;
+}
+
+.badges-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.badge-circle:hover {
+  transform: scale(1.1);
+}
+
+.badge-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.badge-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2b2d42;
+  max-width: 100px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .badges-grid {
+    gap: 1.5rem;
+  }
+  
+  .badge-circle {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .badge-image {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .badges-grid {
+    gap: 1rem;
+  }
+  
+  .badge-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .badge-image {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .badge-name {
+    font-size: 0.8rem;
+    max-width: 80px;
+  }
+}
+/* Progress Card Badges */
+.progress-badge {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.badge-mini {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.progress-card {
+  position: relative;
+}
+
+/* Badges Section */
+.badges-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  text-align: center;
+}
+
+.badges-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.badge-circle:hover {
+  transform: scale(1.1);
+}
+
+.badge-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.badge-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2b2d42;
+  max-width: 100px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .badges-grid {
+    gap: 1.5rem;
+  }
+  
+  .badge-circle {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .badge-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .progress-badge {
+    width: 35px;
+    height: 35px;
+    top: -12px;
+    right: -12px;
+  }
+  
+  .badge-mini {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .badges-grid {
+    gap: 1rem;
+  }
+  
+  .badge-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .badge-image {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .badge-name {
+    font-size: 0.8rem;
+    max-width: 80px;
+  }
+  
+  .progress-badge {
+    width: 30px;
+    height: 30px;
+    top: -10px;
+    right: -10px;
+  }
+  
+  .badge-mini {
+    width: 20px;
+    height: 20px;
+  }
+}

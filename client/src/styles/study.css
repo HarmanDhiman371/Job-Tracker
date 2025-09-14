@@ -1,0 +1,521 @@
+/* StudyProgress.css */
+.study-progress-page {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+   margin-top: 50px;
+}
+
+.study-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.study-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2b2d42;
+  margin-bottom: 0.5rem;
+}
+
+.study-header p {
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Overall Progress */
+.overall-progress {
+  margin-bottom: 2rem;
+}
+
+.progress-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.progress-card h2 {
+  color: #2b2d42;
+  margin-bottom: 1.5rem;
+}
+
+.progress-circle {
+  display: flex;
+  justify-content: center;
+}
+
+.circle-bg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #e9ecef;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-progress {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip: rect(0, 75px, 150px, 0);
+}
+
+.progress-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.percentage {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2b2d42;
+}
+
+.label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Category Tabs */
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e9ecef;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #6c757d;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: #4361ee;
+}
+
+.tab-button.active {
+  color: #2b2d42;
+  font-weight: 600;
+}
+
+.badge-indicator {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Category Content */
+.category-content {
+  margin-bottom: 2rem;
+}
+
+.category-panel {
+  display: none;
+}
+
+.category-panel.active {
+  display: block;
+}
+
+.category-header {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.category-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.category-info h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2b2d42;
+  margin: 0 0 0.3rem 0;
+}
+
+.category-info p {
+  color: #6c757d;
+  margin: 0;
+}
+
+.category-progress {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.progress-percentage {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4361ee;
+}
+
+.progress-bar {
+  height: 8px;
+  width: 150px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.category-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-badge img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.category-badge span {
+  font-weight: 600;
+  color: #4cc9f0;
+  font-size: 0.9rem;
+}
+
+/* Topics List - Single Column */
+.topics-list-single {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.topic-item {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topic-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: #4361ee;
+}
+
+.topic-item.completed {
+  background: rgba(76, 201, 240, 0.1);
+  border-color: #4cc9f0;
+}
+
+.topic-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.topic-name {
+  font-weight: 500;
+  color: #2b2d42;
+  font-size: 1rem;
+}
+
+.topic-item.completed .topic-name {
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+.done-btn {
+  background: #4361ee;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.done-btn:hover {
+  background: #3a0ca3;
+  transform: translateY(-1px);
+}
+
+.done-btn.completed {
+  background: #4cc9f0;
+  cursor: pointer;
+}
+
+.done-btn.completed:hover {
+  background: #3a0ca3;
+}
+
+.completion-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4cc9f0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+/* Quick Stats */
+.quick-stats {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.quick-stats h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2b2d42;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-percentage {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2b2d42;
+}
+
+.stat-label {
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stat-badge {
+  color: #4cc9f0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .study-progress-page {
+    padding: 1rem;
+  }
+  
+  .category-tabs {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+  
+  .category-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .category-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .category-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .category-progress {
+    align-items: center;
+  }
+  
+  .topic-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .topic-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .completion-status {
+    justify-content: center;
+    margin-left: 0;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tab-button {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .study-header h1 {
+    font-size: 2rem;
+  }
+  
+  .topic-item {
+    padding: 1rem;
+  }
+  
+  .done-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* Data Management Buttons */
+.data-management {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #e63946, #d90429);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+}
+
+.btn-danger:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* Responsive adjustments for data management buttons */
+@media (max-width: 768px) {
+  .data-management {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .data-management button,
+  .data-management label {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+}
+
+/* Additional styles for file input button */
+.data-management label {
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Save indicator */
+.save-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4361ee;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.save-indicator.visible {
+  opacity: 1;
+}

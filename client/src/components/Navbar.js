@@ -1,10 +1,12 @@
 // Navbar.js
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,34 +21,81 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const isActiveLink = (path) => {
+    return location.pathname === path ? 'active' : '';
+  };
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="nav-logo">
+        <Link to="/" className="nav-logo" onClick={closeMobileMenu}>
           <i className="fas fa-chart-line"></i>
           <span>PlacementTracker</span>
-        </div>
+        </Link>
         
         <div className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
           <div className="nav-item">
-            <a href="/" className="nav-link">Home</a>
+            <Link 
+              to="/" 
+              className={`nav-link ${isActiveLink('/')}`}
+              onClick={closeMobileMenu}
+            >
+              <i className="fas fa-home"></i>
+              <span>Home</span>
+            </Link>
           </div>
           <div className="nav-item">
-            <a href="companies" className="nav-link">Companies</a>
+            <Link 
+              to="/companies" 
+              className={`nav-link ${isActiveLink('/companies')}`}
+              onClick={closeMobileMenu}
+            >
+              <i className="fas fa-building"></i>
+              <span>Companies</span>
+            </Link>
           </div>
           <div className="nav-item">
-            <a href="#progress" className="nav-link">Study Progress</a>
+            <Link 
+              to="/study" 
+              className={`nav-link ${isActiveLink('/study')}`}
+              onClick={closeMobileMenu}
+            >
+              <i className="fas fa-book"></i>
+              <span>Study Progress</span>
+            </Link>
           </div>
           <div className="nav-item">
-            <a href="#resources" className="nav-link">Resources</a>
+            <Link 
+              to="/resources" 
+              className={`nav-link ${isActiveLink('/resources')}`}
+              onClick={closeMobileMenu}
+            >
+              <i className="fas fa-file-alt"></i>
+              <span>Resources</span>
+            </Link>
           </div>
+          
         </div>
         
         <div className="nav-action">
-          <button className="btn-primary">Get Started</button>
+          <Link 
+            to="/dashboard" 
+            className="dashboard-icon" 
+            title="Dashboard"
+            onClick={closeMobileMenu}
+          >
+            <i className="fas fa-th-large"></i>
+          </Link>
         </div>
         
-        <div className="mobile-menu-btn" onClick={toggleMobileMenu}>
+        <div 
+          className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`} 
+          onClick={toggleMobileMenu}
+        >
           <span></span>
           <span></span>
           <span></span>
