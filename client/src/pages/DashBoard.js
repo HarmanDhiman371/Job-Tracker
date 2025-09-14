@@ -26,12 +26,12 @@ const Dashboard = () => {
     
     // Other subjects - only completion badges
     'Full Stack Completion': '/fs.png',
-    'OS Completion': '/full-stack.png',
-    'Networking Completion': '/cn.png',
+    'OS Completion': '/os.png',
+    'Networking Completion': '/c-n.png',
     'Cloud Completion': '/full-stack.png',
     
     // Overall completion badge
-    'All Subjects Master': '/Harman.png'
+    'All Subjects Master': '/hrmn.png'
   };
 
   // Load user data and progress from localStorage

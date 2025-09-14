@@ -687,3 +687,324 @@
     height: 45px;
   }
 }
+/* Dashboard.css - Congratulations Popup Fix */
+
+/* Congratulations Popup */
+.congrats-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.congrats-content {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: popIn 0.5s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #6c757d;
+  transition: color 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-btn:hover {
+  color: #e63946;
+  background: rgba(230, 57, 70, 0.1);
+}
+
+.congrats-header h2 {
+  color: #2b2d42;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.congrats-header p {
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.badges-earned {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.earned-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.badge-circle-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.badge-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.badge-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.badge-name {
+  font-weight: 700;
+  color: #2b2d42;
+  font-size: 1.1rem;
+}
+
+.badge-category {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Badges Section */
+.badges-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.badges-section h2 {
+  color: #2b2d42;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.no-badges {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+.no-badges i {
+  font-size: 3rem;
+  color: #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.badges-grid-circular {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.badge-circle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4361ee, #3a0ca3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 12px;
+}
+
+.badge-circle:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+}
+
+.badge-circle .badge-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.badge-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2b2d42;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+  margin-bottom: 10px;
+}
+
+.badge-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #2b2d42;
+}
+
+.badge-circle:hover .badge-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Design for Popup */
+@media screen and (max-width: 768px) {
+  .congrats-content {
+    margin: 1rem;
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+  
+  .congrats-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .badge-circle-large {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .earned-badge {
+    padding: 1rem;
+  }
+  
+  .badges-grid-circular {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+  }
+  
+  .badge-circle {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .congrats-content {
+    padding: 1rem;
+  }
+  
+  .close-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .badges-earned {
+    gap: 1rem;
+  }
+  
+  .badge-circle-large {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .badge-name {
+    font-size: 1rem;
+  }
+  
+  .badges-grid-circular {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 0.8rem;
+  }
+  
+  .badge-circle {
+    width: 60px;
+    height: 60px;
+    padding: 8px;
+  }
+}
+
+/* Scrollbar for popup content (if needed) */
+.congrats-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.congrats-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.congrats-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.congrats-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Prevent body scroll when popup is open */
+body.popup-open {
+  overflow: hidden;
+}
+
+/* Add this to your useEffect for the popup */

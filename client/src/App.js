@@ -7,10 +7,12 @@ import Companies from './pages/Companies';
 import StudyProgress from './pages/Study';
 import User from './components/User';
 import Dashboard from './pages/DashBoard';
+import ScrollToTop from './components/Scroll';
 function App() {
   return (
     <Router>
       <Navbar />
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/companies" element={<Companies />} />

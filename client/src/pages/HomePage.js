@@ -106,7 +106,7 @@ const HomePage = () => {
   };
 
   // Badge images mapping - Only DSA has multiple levels, others only have completion badges
-   const badgeImages = {
+  const badgeImages = {
     // DSA badges (4 levels)
     'DSA Bronze': '/dsa-bronze.png',
     'DSA Silver': '/ds-silver.png',
@@ -115,12 +115,12 @@ const HomePage = () => {
     
     // Other subjects - only completion badges
     'Full Stack Completion': '/fs.png',
-    'OS Completion': '/full-stack.png',
-    'Networking Completion': '/cn.png',
+    'OS Completion': '/os.png',
+    'Networking Completion': '/c-n.png',
     'Cloud Completion': '/full-stack.png',
     
     // Overall completion badge
-    'All Subjects Master': '/Harman.png'
+    'All Subjects Master': '/hrmn.png'
   };
 
   // Function to get the appropriate badge name based on progress
