@@ -8,6 +8,7 @@ import StudyProgress from './pages/Study';
 import User from './components/User';
 import Dashboard from './pages/DashBoard';
 import ScrollToTop from './components/Scroll';
+import PlanTracker from './pages/Plan';
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
          <Route path="/study" element={<StudyProgress />} />
          <Route path="/user" element={<User />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path = "/plan" element = {<PlanTracker/>}/>
        
       </Routes>
       <Footer/>

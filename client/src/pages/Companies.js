@@ -33,6 +33,7 @@ const Companies = () => {
   // Predefined role options
   const roleOptions = [
     'Software Engineer',
+    'Associcate software Developer',
     'Frontend Developer',
     'Backend Developer',
     'Full Stack Developer',
@@ -48,6 +49,7 @@ const Companies = () => {
     'Bangalore',
     'Hyderabad',
     'Pune',
+    'Mohali',
     'Mumbai',
     'Delhi',
     'Chennai',
@@ -57,12 +59,12 @@ const Companies = () => {
 
   // Predefined package range options
   const packageOptions = [
-    '0-10 LPA',
-    '10-20 LPA',
-    '20-30 LPA',
-    '30-40 LPA',
-    '40-50 LPA',
-    '50+ LPA'
+    '0-5 LPA',
+    '5-8 LPA',
+    '8-10 LPA',
+    '10-15 LPA',
+    '15-20 LPA',
+    '20+ LPA'
   ];
 
   // Save companies to localStorage whenever companies state changes
